@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Technical Documentation Page</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="main_body">
+        <nav id="navbar">
+            <header>JavaScript Documentation</header>
+            <a href="#introduction" class="nav-link">Introduction</a>
+            <a href="#javascript" class="nav-link">JavaScript</a>
+            <a href="#defining_functions" class="nav-link">Defining Functions</a>
+            <a href="#calling_functions" class="nav-link">Calling Functions</a>
+            <a href="#function_scope" class="nav-link">Function Scope</a>
+            <a href="#closures" class="nav-link">Closures</a>
+            <a href="#arguments_and_parameters" class="nav-link">Arguments and Parameters</a>
+            <a href="#arrow_functions" class="nav-link">Arrow functions</a>
+        </nav>
+        <main id="main-doc">
+            <section class="main-section" id="introduction">
+                <header>Introduction</header>
+                <p>
+                    JavaScript is a programming language that adds interactivity to your website. 
+                </p>
+                <p>
+                    This happens in games, in the behavior of responses when buttons are pressed or with data entry on forms; with dynamic styling; with animation, etc.
+                </p>
+            </section>
+            <section class="main-section" id="javascript">
+                <header>JavaScript</header>
+                <p>
+                    JavaScript borrows most of its syntax from Java, C, and C++, but it has also been influenced by Awk, Perl, and Python.
+                </p>
+                <p>
+                    JavaScript is case-sensitive and uses the Unicode character set. For example, the word Früh (which means "early" in German) could be used as a variable name.
+                </p>
+                <pre>
+                    <code>
+                        let Früh = "foobar"
+                    </code>
+                </pre>
+                <p>
+                    There are about 6 different things you can do with Functions in JavaScript.
+                </p>
+                <ul>
+                    <li>Defining Functions</li>
+                    <li>Calling Functions</li>
+                    <li>Function Scope</li>
+                    <li>Closures</li>
+                    <li>Arguments and Parameters</li>
+                    <li>Arrow functions</li>
+                </ul>
+            </section>
+            <section class="main-section" id="defining_functions">
+                <header>Defining Functions</header>
+                <p>
+                   A function definition (also called a function declaration, or function statement) consists of the function keyword, followed by:
+                </p>
+                <p>
+                    The name of the function. A list of parameters to the function, enclosed in parentheses and separated by commas. 
+                </p>
+                <p>
+                    The JavaScript statements that define the function, enclosed in curly brackets, {...}.
+                </p>
+                <p>
+                    For example, the following code defines a simple function named square:
+                </p>
+                <pre> 
+                    <code> 
+                        function square(number) {
+                          return number * number;
+                        }
+                    </code> 
+                </pre> 
+            </section>
+            <section class="main-section" id="calling_functions">
+                <header>Calling functions</header>
+                <p>
+                    Defining a function does not execute it. Defining it names the function and specifies what to do when the function is called.
+                </p>
+                <p>
+                    Calling the function actually performs the specified actions with the indicated parameters. For example, if you define the function square, you could call it as follows:
+                </p>
+                <pre>
+                    <code>
+                        square(5);
+                    </code>
+                </pre>
+            </section>
+            <section class="main-section" id="function_scope">
+                <header>Function Scope</header>
+                <p>
+                    Variables defined inside a function cannot be accessed from anywhere outside the function, because the variable is defined only in the scope of the function. <br> However, a function can access all variables and functions defined inside the scope in which it is defined.
+                </p>
+                <p>
+                    In other words, a function defined in the global scope can access all variables defined in the global scope. A function defined inside another function can also <br> access all variables defined in its parent function, and any other variables to which the parent function has access.
+                </p>
+                <pre>
+                    <code>
+                        // The following variables are defined in the global scope
+                        var num1 = 20,
+                            num2 = 3,
+                            name = 'Chamahk';
+
+                        // This function is defined in the global scope
+                        function multiply() {
+                          return num1 * num2;
+                        }
+
+                        multiply(); // Returns 60
+
+                        // A nested function example
+                        function getScore() {
+                          var num1 = 2,
+                              num2 = 3;
+
+                          function add() {
+                            return name + ' scored ' + (num1 + num2);
+                          }
+
+                          return add();
+                        }
+
+                        getScore(); // Returns "Chamahk scored 5"
+                    </code>
+                </pre>
+            </section>
+            <section class="main-section" id="closures">
+                <header>Closures</header>
+                <p>
+                    Closures are one of the most powerful features of JavaScript. JavaScript allows for the nesting of functions and grants the inner function full access to all the <br> variables and functions defined inside the outer function (and all other variables and functions that the outer function has access to).
+                </p>
+                <p>
+                    However, the outer function does not have access to the variables and functions defined inside the inner function. This provides a sort of encapsulation for the <br> variables of the inner function.
+                </p>
+                <p>
+                     Also, since the inner function has access to the scope of the outer function, the variables and functions defined in the outer function will live longer than the duration <br> of the outer function execution, if the inner function manages to survive beyond the life <br> of the outer function. A closure is created when the inner function is somehow made available <br> to any scope outside the outer function.
+                </p>
+                <pre>
+                    <code>
+                       var pet = function(name) {   // The outer function 
+                                                    //defines a variable called "name"
+                          var getName = function() {
+                            return name;             // The inner function has access 
+                                                     //to the "name" variable of the outer
+                                                     //function
+                          }
+                          return getName;            // Return the inner function, thereby 
+                                                     //exposing it to outer scopes
+                        }
+                        myPet = pet('Vivie');
+
+                        myPet();                     // Returns "Vivie"
+                    </code>
+                </pre>
+            </section>
+            <section class="main-section" id="arguments_and_parameters">
+                <header>Arguments and Parameters</header>
+                <p>
+                    The arguments of a function are maintained in an array-like object. Within a function, you can address the arguments passed to it as follows:
+                </p>
+                <pre>
+                    <code>
+                        arguments[i]
+                    </code>
+                </pre>
+                <p>
+                    where i is the ordinal number of the argument, starting at 0. So, the first argument passed to a function would be arguments[0]. The total number of arguments is <br> indicated by arguments.length.
+                </p>
+                <p>
+                   Using the arguments object, you can call a function with more arguments than it is formally declared to accept. This is often useful if you don't know in advance how <br> many arguments will be passed to the function. You can use arguments.length to determine the number of arguments actually passed to the function, and then access <br> each argument using the arguments object.
+                </p>
+                <p>
+                    In JavaScript, parameters of functions default to undefined. However, in some situations it might be useful to set a different default value. This is exactly what default parameters do.
+                </p>
+                <p>
+                    Without default parameters (pre-ECMAScript 2015)
+                    In the past, the general strategy for setting defaults was to test parameter values in the body of the function and assign a value if <br> they are undefined.
+
+                    In the following example, if no value is provided for b, its value would be undefined when evaluating a*b, and a call to multiply would normally have returned NaN. <br> However, this is prevented by the second line in this example:
+                </p>
+                <pre>
+                    <code>
+                        function multiply(a, b) {
+                          b = typeof b !== 'undefined' ?  b : 1;
+
+                          return a * b;
+                        }
+
+                        multiply(5); // 5
+                    </code>
+                </pre>
+            </section>
+            <section class="main-section" id="arrow_functions">
+                <header>Arrow functions</header>
+                <p>
+                    An arrow function expression (previously, and now incorrectly known as fat arrow function) has a shorter syntax compared to function expressions and does not have its own this, <br> arguments, super, or new.target. Arrow functions are always anonymous. See also this hacks.mozilla.org blog post: "ES6 In Depth: Arrow functions".
+                </p>
+                <p>
+                    Two factors influenced the introduction of arrow functions: shorter functions and non-binding of this.
+                </p>
+                <p>
+                    Shorter functions
+                    In some functional patterns, shorter functions are welcome. Compare:
+                </p>
+                <pre>
+                    <code>
+                        var a = [
+                          'Hydrogen',
+                          'Helium',
+                          'Lithium',
+                          'Beryllium'
+                        ];
+
+                        var a2 = a.map(function(s) { return s.length; });
+
+                        console.log(a2); // logs [8, 6, 7, 9]
+
+                        var a3 = a.map(s => s.length);
+
+                        console.log(a3); // logs [8, 6, 7, 9]
+                    </code>
+                </pre>
+            </section>
+          </main>
+        </div>
+    </body>
+</html>
